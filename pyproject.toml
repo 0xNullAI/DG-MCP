@@ -1,0 +1,16 @@
+[project]
+name = "dg-mcp"
+version = "0.1.0"
+description = "MCP Server for DG-Lab Coyote 3.0 via BLE"
+requires-python = ">=3.10"
+dependencies = [
+    "bleak>=0.22.0",
+    "mcp[cli]>=1.0.0",
+]
+
+[project.scripts]
+dg-mcp = "dg_mcp.server:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
