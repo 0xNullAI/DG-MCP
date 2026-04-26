@@ -1,9 +1,9 @@
 name: CI
 
 on:
+  pull_request:
   push:
     branches: [dev, main]
-  pull_request:
 
 jobs:
   build:
@@ -16,4 +16,5 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run typecheck
+      - run: npm run test
       - run: npm run build
