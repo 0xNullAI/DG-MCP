@@ -21,6 +21,27 @@ jobs:
       - run: npm ci
       - run: npm run typecheck
       - run: npm run build
-      - run: npm publish --access public
+      - name: Publish to npm
+        run: npm publish --access public --provenance
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Release summary
+        if: success()
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          {
+            echo "## ✅ Released to npm"
+            echo ""
+            echo "**Package:** \`dg-mcp@${VERSION}\`"
+            echo ""
+            echo "**npm:** https://www.npmjs.com/package/dg-mcp/v/${VERSION}"
+            echo ""
+            echo "**Install:**"
+            echo ""
+            echo '```bash'
+            echo "npx -y dg-mcp@${VERSION}"
+            echo "# or"
+            echo "npm install -g dg-mcp@${VERSION}"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
