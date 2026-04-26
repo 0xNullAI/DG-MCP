@@ -44,7 +44,7 @@ export function createDgMcpServer(options: DgMcpServerOptions): Server {
   const server = new Server(
     {
       name: 'dg-mcp',
-      version: '1.0.0',
+      version: '1.0.1',
     },
     {
       capabilities: {

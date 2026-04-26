@@ -1,7 +1,7 @@
 {
   "name": "dg-mcp",
-  "version": "1.0.0",
-  "description": "Model Context Protocol server for DG-Lab Coyote 2.0/3.0 — exposes the device as MCP tools (start, stop, adjust_strength, change_wave, burst, design_wave, ...) for any MCP-compatible LLM client",
+  "version": "1.0.1",
+  "description": "Model Context Protocol server for DG-Lab Coyote 2.0/3.0 \u2014 exposes the device as MCP tools (start, stop, adjust_strength, change_wave, burst, design_wave, ...) for any MCP-compatible LLM client",
   "license": "MIT",
   "author": "0xNullAI",
   "homepage": "https://github.com/0xNullAI/DG-MCP",
@@ -14,7 +14,11 @@
   "bin": {
     "dg-mcp": "./dist/cli.js"
   },
-  "files": ["dist", "README.md", "LICENSE"],
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "publishConfig": {
     "access": "public"
   },
@@ -26,7 +30,9 @@
     "dev": "tsx src/cli.ts",
     "typecheck": "tsc -p tsconfig.json --noEmit",
     "start": "node dist/cli.js",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build",
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "dependencies": {
     "@dg-kit/core": "^1.0.0",
@@ -36,12 +42,20 @@
     "@modelcontextprotocol/sdk": "^1.0.0",
     "@stoprocent/noble": "^2.3.0",
     "fflate": "^0.8.2",
-    "zod": "^3.23.8"
+    "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@types/node": "^25.6.0",
+    "@types/node": "^22.10.0",
     "tsx": "^4.19.0",
-    "typescript": "^6.0.3"
+    "typescript": "^5.6.3",
+    "vitest": "^4.1.5"
   },
-  "keywords": ["mcp", "model-context-protocol", "dg-lab", "coyote", "ble", "bluetooth"]
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "dg-lab",
+    "coyote",
+    "ble",
+    "bluetooth"
+  ]
 }
